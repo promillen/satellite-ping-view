@@ -76,16 +76,14 @@ const SatelliteMap = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen relative">
+    <div className="w-full h-96 relative rounded-lg overflow-hidden shadow-lg">
       <div ref={mapDiv} className="w-full h-full" />
       
-      {/* Overlay with location info */}
-      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg z-[1000]">
-        <h2 className="text-xl font-bold text-gray-800 mb-2">Satellite View</h2>
-        <p className="text-sm text-gray-600">
-          High-resolution satellite imagery<br/>
+      {/* Small overlay with location info */}
+      <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-md px-3 py-2 shadow-md z-[1000]">
+        <p className="text-xs text-gray-600">
           Copenhagen, Denmark<br/>
-          <span className="text-xs text-gray-500">Fixed view at zoom level 19</span>
+          <span className="text-xs text-gray-500">Zoom level 19</span>
         </p>
       </div>
     </div>
