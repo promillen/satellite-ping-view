@@ -1,4 +1,5 @@
 
+
 import SatelliteMap from "@/components/SatelliteMap";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -32,17 +33,10 @@ const Index = () => {
           <CardContent>
             <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=800&h=600&fit=crop" 
-                alt="Copenhagen street view - user submitted photo"
+                src="/lovable-uploads/f044fe18-dec5-4f90-bca5-6d9af8aaf601.png" 
+                alt="Harbor scene with boat and drilling equipment"
                 className="w-full h-full object-cover"
               />
-            </div>
-            <div className="mt-4 p-4 bg-gray-100 rounded-lg">
-              <p className="text-sm text-gray-700">
-                <span className="font-semibold">Photo taken by:</span> User<br/>
-                <span className="font-semibold">Date:</span> Today<br/>
-                <span className="font-semibold">Description:</span> Beautiful Copenhagen architecture and canal view
-              </p>
             </div>
           </CardContent>
         </Card>
@@ -52,3 +46,4 @@ const Index = () => {
 };
 
 export default Index;
+
