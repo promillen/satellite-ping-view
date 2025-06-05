@@ -23,14 +23,14 @@ const SatelliteMap = () => {
     mapView.current = new MapView({
       container: mapDiv.current,
       map: map,
-      center: [-122.4194, 37.7749], // San Francisco coordinates [longitude, latitude]
+      center: [12.606513, 55.690362], // Copenhagen coordinates [longitude, latitude]
       zoom: 18
     });
 
     // Create a point geometry for the marker
     const point = new Point({
-      longitude: -122.4194,
-      latitude: 37.7749
+      longitude: 12.606513,
+      latitude: 55.690362
     });
 
     // Create a symbol for the marker with pulsing effect
