@@ -37,26 +37,22 @@ const SatelliteMap = () => {
         keyboard={false}
         className="w-full h-full"
       >
-        {() => (
-          <>
-            <TileLayer
-              attribution='&copy; <a href="https://www.esri.com/">Esri</a> &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-              maxZoom={19}
-            />
-            <Marker position={position} icon={createPingIcon()}>
-              <Popup>
-                <div className="text-center">
-                  <h3 className="font-semibold text-lg">Location Ping</h3>
-                  <p className="text-sm text-gray-600">
-                    Lat: {position[0].toFixed(4)}<br/>
-                    Lng: {position[1].toFixed(4)}
-                  </p>
-                </div>
-              </Popup>
-            </Marker>
-          </>
-        )}
+        <TileLayer
+          attribution='&copy; <a href="https://www.esri.com/">Esri</a> &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          maxZoom={19}
+        />
+        <Marker position={position} icon={createPingIcon()}>
+          <Popup>
+            <div className="text-center">
+              <h3 className="font-semibold text-lg">Location Ping</h3>
+              <p className="text-sm text-gray-600">
+                Lat: {position[0].toFixed(4)}<br/>
+                Lng: {position[1].toFixed(4)}
+              </p>
+            </div>
+          </Popup>
+        </Marker>
       </MapContainer>
       
       {/* Overlay with location info */}
