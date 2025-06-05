@@ -5,6 +5,7 @@ import MapView from '@arcgis/core/views/MapView';
 import Graphic from '@arcgis/core/Graphic';
 import Point from '@arcgis/core/geometry/Point';
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol';
+import Zoom from '@arcgis/core/widgets/Zoom';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
 const SatelliteMap = () => {
@@ -19,12 +20,16 @@ const SatelliteMap = () => {
       basemap: 'satellite'
     });
 
-    // Create the map view
+    // Create the map view with higher zoom and navigation enabled
     mapView.current = new MapView({
       container: mapDiv.current,
       map: map,
       center: [12.606513, 55.690362], // Copenhagen coordinates [longitude, latitude]
-      zoom: 18
+      zoom: 20, // Increased zoom for closer detail
+      constraints: {
+        minZoom: 10,
+        maxZoom: 23
+      }
     });
 
     // Create a point geometry for the marker
@@ -51,11 +56,20 @@ const SatelliteMap = () => {
 
     mapView.current.graphics.add(pointGraphic);
 
-    // Disable navigation for a locked view
+    // Enable navigation and add zoom controls
     mapView.current.when(() => {
       if (mapView.current) {
-        mapView.current.navigation.mouseWheelZoomEnabled = false;
-        mapView.current.navigation.browserTouchPanEnabled = false;
+        // Enable interactive navigation
+        mapView.current.navigation.mouseWheelZoomEnabled = true;
+        mapView.current.navigation.browserTouchPanEnabled = true;
+        
+        // Add zoom widget for better user control
+        const zoomWidget = new Zoom({
+          view: mapView.current
+        });
+        mapView.current.ui.add(zoomWidget, "top-left");
+        
+        // Configure popup settings
         mapView.current.popup.dockEnabled = true;
         mapView.current.popup.dockOptions = {
           buttonEnabled: false,
@@ -77,11 +91,12 @@ const SatelliteMap = () => {
       <div ref={mapDiv} className="w-full h-full" />
       
       {/* Overlay with location info */}
-      <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg z-[1000]">
+      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg z-[1000]">
         <h2 className="text-xl font-bold text-gray-800 mb-2">Satellite View</h2>
         <p className="text-sm text-gray-600">
           High-resolution satellite imagery<br/>
-          Powered by ArcGIS
+          Copenhagen, Denmark<br/>
+          <span className="text-xs text-gray-500">Use mouse wheel to zoom • Drag to pan</span>
         </p>
       </div>
     </div>
