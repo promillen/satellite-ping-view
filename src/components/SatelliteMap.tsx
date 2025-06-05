@@ -51,12 +51,12 @@ const SatelliteMap = () => {
 
     mapView.current.graphics.add(pointGraphic);
 
-    // Disable navigation for a locked view
+    // Disable navigation for a locked view using the current API
     mapView.current.when(() => {
       if (mapView.current) {
-        // Disable interactive navigation
-        mapView.current.navigation.mouseWheelZoomEnabled = false;
-        mapView.current.navigation.browserTouchPanEnabled = false;
+        // Disable interactive navigation using the current API
+        mapView.current.navigation.actionMap.mouseWheel.enabled = false;
+        mapView.current.navigation.actionMap.pan.enabled = false;
         
         // Configure popup settings
         mapView.current.popup.dockEnabled = true;
