@@ -82,8 +82,8 @@ const SatelliteMap = () => {
       {/* Small overlay with location info */}
       <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-md px-3 py-2 shadow-md z-[1000]">
         <p className="text-xs text-gray-600">
-          Copenhagen, Denmark<br/>
-          <span className="text-xs text-gray-500">Zoom level 19</span>
+          Glacier #1<br/>
+          <span className="text-xs text-gray-500">Plant east of pool door</span>
         </p>
       </div>
     </div>
