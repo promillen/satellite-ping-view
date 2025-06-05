@@ -1,5 +1,4 @@
 
-
 import SatelliteMap from "@/components/SatelliteMap";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -13,24 +12,14 @@ const Index = () => {
           <p className="text-lg text-gray-600">Satellite imagery and ground-level photography of Copenhagen</p>
         </div>
 
-        {/* Satellite Map Section */}
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle className="text-2xl">Satellite View</CardTitle>
-            <p className="text-gray-600">High-resolution satellite imagery from above</p>
-          </CardHeader>
-          <CardContent>
-            <SatelliteMap />
-          </CardContent>
-        </Card>
-
-        {/* User Photo Section */}
+        {/* Combined Location Section */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">Ground Level Photo</CardTitle>
-            <p className="text-gray-600">User-submitted photograph taken at this location</p>
+            <CardTitle className="text-2xl">Recorded location</CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="space-y-6">
+            <SatelliteMap />
+            
             <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img 
                 src="/lovable-uploads/f044fe18-dec5-4f90-bca5-6d9af8aaf601.png" 
@@ -46,4 +35,3 @@ const Index = () => {
 };
 
 export default Index;
-
