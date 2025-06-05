@@ -5,7 +5,6 @@ import MapView from '@arcgis/core/views/MapView';
 import Graphic from '@arcgis/core/Graphic';
 import Point from '@arcgis/core/geometry/Point';
 import SimpleMarkerSymbol from '@arcgis/core/symbols/SimpleMarkerSymbol';
-import Zoom from '@arcgis/core/widgets/Zoom';
 import '@arcgis/core/assets/esri/themes/light/main.css';
 
 const SatelliteMap = () => {
@@ -20,16 +19,12 @@ const SatelliteMap = () => {
       basemap: 'satellite'
     });
 
-    // Create the map view with higher zoom and navigation enabled
+    // Create the map view with fixed zoom level
     mapView.current = new MapView({
       container: mapDiv.current,
       map: map,
       center: [12.606513, 55.690362], // Copenhagen coordinates [longitude, latitude]
-      zoom: 20, // Increased zoom for closer detail
-      constraints: {
-        minZoom: 10,
-        maxZoom: 23
-      }
+      zoom: 19 // Fixed zoom level
     });
 
     // Create a point geometry for the marker
@@ -56,18 +51,12 @@ const SatelliteMap = () => {
 
     mapView.current.graphics.add(pointGraphic);
 
-    // Enable navigation and add zoom controls
+    // Disable navigation for a locked view
     mapView.current.when(() => {
       if (mapView.current) {
-        // Enable interactive navigation
-        mapView.current.navigation.mouseWheelZoomEnabled = true;
-        mapView.current.navigation.browserTouchPanEnabled = true;
-        
-        // Add zoom widget for better user control
-        const zoomWidget = new Zoom({
-          view: mapView.current
-        });
-        mapView.current.ui.add(zoomWidget, "top-left");
+        // Disable interactive navigation
+        mapView.current.navigation.mouseWheelZoomEnabled = false;
+        mapView.current.navigation.browserTouchPanEnabled = false;
         
         // Configure popup settings
         mapView.current.popup.dockEnabled = true;
@@ -96,7 +85,7 @@ const SatelliteMap = () => {
         <p className="text-sm text-gray-600">
           High-resolution satellite imagery<br/>
           Copenhagen, Denmark<br/>
-          <span className="text-xs text-gray-500">Use mouse wheel to zoom • Drag to pan</span>
+          <span className="text-xs text-gray-500">Fixed view at zoom level 19</span>
         </p>
       </div>
     </div>
